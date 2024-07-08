@@ -1,54 +1,59 @@
-# Gender Classification using Haarcascade and Gender Net.caffe Model
+# Gender Classification Using Haarcascade and Gender Net Caffe Model
 
-This project focuses on gender classification using Haarcascade for face detection and the Gender Net.caffe model for gender prediction. The implementation is done in Python with OpenCV and Caffe.
+This project implements gender classification using OpenCV's Haarcascade for face detection and the Gender Net Caffe model for gender classification.
 
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Features](#features)
-- [Requirements](#requirements)
 - [Installation](#installation)
-- [Setting Up Git LFS for `gender_net.caffemodel`] 
 - [Usage](#usage)
-- [Results](#results)
+- [Setting Up Git LFS](#setting-up-git-lfs)
+- [Command-Line Arguments](#Command-Line-Arguments)
+- [Example](#Example)
+- [Results](#Results)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgements](#acknowledgements)
+- [Code Explanation](#code-explanation)
+- [Release resources](#Release-resources)
+- [Running the Code](#Running-the-Code)
 
 ## Introduction
 
-Gender classification is an essential task in many applications such as security systems, human-computer interaction, and demographic studies. This project utilizes Haarcascade for detecting faces in images and the Gender Net.caffe model to classify the detected faces as male or female.
+This project uses OpenCV to detect faces in images or video streams and classify the detected faces as either male or female using a pre-trained Gender Net Caffe model.
 
-## Features
-
-- Face detection using Haarcascade.
-- Gender classification using Gender Net.caffe model.
-- Real-time gender classification using webcam feed.
-- Easy-to-use command-line interface.
-
-## Requirements
-
-- Python 3.x
-- OpenCV
-- Caffe
-- NumPy
+![Example Output](OP.png)
 
 ## Installation
 
+### Prerequisites
+
+- Python 3.x
+- OpenCV
+- Git
+
+### Steps
+
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/gender-classification.git
+    git clone https://github.com/rgunasree/gender-classification-.git
+    cd gender-classification-
     ```
-2. Navigate to the project directory:
-    ```sh
-    cd gender-classification
-    ```
-3. Install the required packages:
-    ```sh
-    pip install -r requirements.txt
-    ```
-4. Download the `deploy_gender.prototxt` and `gender_net.caffemodel` files and place them in the project directory.
 
+2. Install the required Python packages:
+    ```sh
+    pip install opencv-python opencv-python-headless
+    ```
+
+3. Download the `gender_net.caffemodel` file and place it in the project directory. You can download it from the following link:
+    [Gender Net Caffe Model](https://example.com/path/to/gender_net.caffemodel)
+
+## Usage
+
+To run the gender classification on a webcam feed, execute the following command:
+```sh
+python gender_classification.py
+```
 ## Setting Up Git LFS for `gender_net.caffemodel`
 
 To properly clone this repository and handle large files like `gender_net.caffemodel`, ensure you have Git LFS installed. Follow these steps:
@@ -58,29 +63,20 @@ To properly clone this repository and handle large files like `gender_net.caffem
     git lfs install
     ```
 
-2. Clone the repository:
+2. Track the 'gender_net.caffemodel' file with Git LFS:
     ```
-    git clone https://github.com/rgunasree/gender-classification-.git
+    git lfs track "gender_net.caffemodel"
     ```
 
-3. Pull the LFS files:
+3. Add and commit the changes:
     ```
-    git lfs pull
+    git add .gitattributes
+    git add gender_net.caffemodel
+    git commit -m "Add gender_net.caffemodel using Git LFS"
+    git push origin main
     ```
 
 Now you should have `gender_net.caffemodel` properly downloaded and ready to use.
-
-
-## Usage
-
-1. **Face Detection and Gender Classification on Images:**
-    ```sh
-    python classify_gender.py --image path_to_your_image.jpg
-    ```
-2. **Real-time Gender Classification using Webcam:**
-    ```sh
-    python classify_gender.py --webcam
-    ```
 
 ### Command-Line Arguments
 
@@ -131,7 +127,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ### Code Explanation
 
-## detect_and_estimate_gender Function
+#### detect_and_estimate_gender Function
 This function detects faces in a frame and estimates their gender.
 
 - Convert frame to grayscale:
@@ -153,7 +149,7 @@ for (x, y, w, h) in faces:
     cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
     cv2.putText(frame, gender_label, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 ```
-## process_video_stream Function
+#### process_video_stream Function
 This function processes the video stream from the webcam and applies gender classification in real-time.
 
 - Open the video stream:
