@@ -8,6 +8,7 @@ This project focuses on gender classification using Haarcascade for face detecti
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Setting Up Git LFS for `gender_net.caffemodel`] 
 - [Usage](#usage)
 - [Results](#results)
 - [Contributing](#contributing)
@@ -47,6 +48,28 @@ Gender classification is an essential task in many applications such as security
     pip install -r requirements.txt
     ```
 4. Download the `deploy_gender.prototxt` and `gender_net.caffemodel` files and place them in the project directory.
+
+## Setting Up Git LFS for `gender_net.caffemodel`
+
+To properly clone this repository and handle large files like `gender_net.caffemodel`, ensure you have Git LFS installed. Follow these steps:
+
+1. Install Git LFS:
+    ```
+    git lfs install
+    ```
+
+2. Clone the repository:
+    ```
+    git clone https://github.com/rgunasree/gender-classification-.git
+    ```
+
+3. Pull the LFS files:
+    ```
+    git lfs pull
+    ```
+
+Now you should have `gender_net.caffemodel` properly downloaded and ready to use.
+
 
 ## Usage
 
